@@ -12,8 +12,8 @@ public:
     static sf::Texture mountain;
 
     static void init() {
-        grass.loadFromFile("Assets/Grass.png");
-        character.loadFromFile("Assets/Character.png");
+        grass.loadFromFile("../Assets/Grass.png");
+        character.loadFromFile("../Assets/Character.png");
     }
 
 };
