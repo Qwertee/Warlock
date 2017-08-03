@@ -9,17 +9,25 @@
 #include <SFML/Graphics/RenderWindow.hpp>
 #include <SFML/Window/Keyboard.hpp>
 #include "Player.h"
+#include "Map.h"
 
 class Game {
 private:
-    void handleInput(sf::Keyboard::Key key);
+	Player *player;
+	sf::RenderWindow *window;
+	sf::View *view;
+	Map *map;
 
-
+	// private functions
+	void handleInput(sf::Keyboard::Key key);
 
 public:
+	Game();
+	void initialize();
     void run();
-    Game();
-    Player *player;
+	void update();
+	void render();
+	void cleanUp();
 };
 
 

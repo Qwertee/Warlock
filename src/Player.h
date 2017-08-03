@@ -15,6 +15,8 @@ public:
 
     Player();
 
+	sf::Vector2f getPos();
+
     void move(int xOffset, int yOffset);
 
     void draw(sf::RenderTarget& target, sf::RenderStates states) const override;
