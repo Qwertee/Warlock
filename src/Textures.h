@@ -11,10 +11,8 @@ public:
     static sf::Texture character;
     static sf::Texture mountain;
 
-    static void init() {
-        grass.loadFromFile("../Assets/Grass.png");
-        character.loadFromFile("../Assets/Character.png");
-    }
+	// load the textures into their appropriate variables
+	static void init();
 
 };
 
