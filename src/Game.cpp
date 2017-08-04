@@ -7,7 +7,7 @@
 
 #define MAP_WIDTH 500
 #define MAP_HEIGHT 500
-#define VIEW_SCALE 10
+#define VIEW_SCALE 20
 
 Game::Game() {
 	Game::initialize();
@@ -54,6 +54,12 @@ void Game::update() {
 		if (event.type == sf::Event::KeyPressed) {
 			handleInput(event.key.code);
 		}
+
+		if (event.type == sf::Event::MouseWheelScrolled) {
+			// TODO: Put a limit on how far you can scroll so you dont scroll though the map
+			view->setSize(view->getSize().x - event.mouseWheelScroll.delta * 2,
+						  view->getSize().y - event.mouseWheelScroll.delta * 2);
+		}
 	}
 
 	// update everything else
@@ -62,12 +68,14 @@ void Game::update() {
 	// keep the view centered on the player
 	// TODO: is there a cleaner way to do this?
 	view->setCenter(player->getPos());
+	view->zoom(1);
 	window->setView(*view);
 }
 
 void Game::render() {
 	// Draw stuff
-	// draw the map - before the player NOTE: we are trying to draw only the tiles within the current view
+	// draw the map - before the player 
+	// NOTE: we are trying to draw only the tiles within the current view
 
 	// TODO: Optimize this shit
 	sf::FloatRect rect(view->getCenter() - view->getSize(), view->getSize() + view->getSize());
