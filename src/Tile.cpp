@@ -1,8 +1,8 @@
 #include "Tile.h"
 #include "Textures.h"
 
-Tile::Tile(int x, int y) {
-    sprite = sf::Sprite(Textures::grass);
+Tile::Tile(int x, int y, sf::Texture &texture) {
+    sprite = sf::Sprite(texture);
     sprite.setPosition(x * 8, y * 8);
 }
 

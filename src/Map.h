@@ -10,12 +10,17 @@
 
 class Map {
 private:
-    int width, height;
-    void generateMap();
+	int size;
     std::vector<std::vector<Tile*>*> *vec;
+	std::vector<std::vector<int>>     map;
+
+
+	void generateMap();
+	void generateHeightMap(int range);
+	double randRange(double min, double max);
 
 public:
-    Map(int width, int height);
+    Map(int size);
 
     Tile *getTile(int x, int y);
 

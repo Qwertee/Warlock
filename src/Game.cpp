@@ -5,9 +5,8 @@
 #include "Game.h"
 #include "Textures.h"
 
-#define MAP_WIDTH 500
-#define MAP_HEIGHT 500
-#define VIEW_SCALE 20
+#define MAP_SIZE 513
+#define VIEW_SCALE 100
 
 Game::Game() {
 	Game::initialize();
@@ -27,7 +26,7 @@ void Game::initialize() {
 
 	player = new Player(8, 8);
 
-	map = new Map(MAP_WIDTH, MAP_HEIGHT);
+	map = new Map(MAP_SIZE);
 }
 
 void Game::run() {
@@ -57,8 +56,8 @@ void Game::update() {
 
 		if (event.type == sf::Event::MouseWheelScrolled) {
 			// TODO: Put a limit on how far you can scroll so you dont scroll though the map
-			view->setSize(view->getSize().x - event.mouseWheelScroll.delta * 2,
-						  view->getSize().y - event.mouseWheelScroll.delta * 2);
+			view->setSize(view->getSize().x - event.mouseWheelScroll.delta * 100,
+						  view->getSize().y - event.mouseWheelScroll.delta * 100);
 		}
 	}
 
@@ -79,8 +78,8 @@ void Game::render() {
 
 	// TODO: Optimize this shit
 	sf::FloatRect rect(view->getCenter() - view->getSize(), view->getSize() + view->getSize());
-	for (int i = 0; i < MAP_WIDTH; i++) {
-		for (int j = 0; j < MAP_HEIGHT; j++) {
+	for (int i = 0; i < MAP_SIZE; i++) {
+		for (int j = 0; j < MAP_SIZE; j++) {
 			Tile *tile = map->getTile(i, j);
 			if (rect.intersects(tile->getRect())) {
 				window->draw(*tile);
