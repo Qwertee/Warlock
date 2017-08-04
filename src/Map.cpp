@@ -24,7 +24,7 @@ Map::Map(int size) {
 	map[size - 1][size - 1] = 100;
 
 	// generate the heightmap
-	generateHeightMap(501);
+	generateHeightMap(25);
 
     // make the map
     generateMap();
@@ -73,6 +73,8 @@ void Map::generateHeightMap(int range) {
 
 	for (int length = size - 1; length >= 2; length /= 2, range /= 2) {
 		int halfLength = length / 2;
+
+
 		// square 
 		for (int x = 0; x < size - 1; x += length) {
 			for (int y = 0; y < size - 1; y += length) {
@@ -92,7 +94,7 @@ void Map::generateHeightMap(int range) {
 					map[x][(y + halfLength) % (size - 1)] +
 					map[x][(y - halfLength + size - 1) % (size - 1)];
 										// random value between -range and range
-				avg /= 4.0 + randRange(-range, range);
+				avg = (avg / 4.0) + randRange(-range, range);
 				map[x][y] = avg;
 
 				if (x == 0) map[size - 1][y] = avg;

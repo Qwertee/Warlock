@@ -5,8 +5,8 @@
 #include "Game.h"
 #include "Textures.h"
 
-#define MAP_SIZE 513
-#define VIEW_SCALE 100
+#define MAP_SIZE 257
+#define VIEW_SCALE 1250
 
 Game::Game() {
 	Game::initialize();
