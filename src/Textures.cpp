@@ -1,5 +1,4 @@
 #include "Textures.h"
-#include <direct.h>
 
 // for changing the working directory for Windows compatibility
 #if _WIN32

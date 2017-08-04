@@ -57,7 +57,7 @@ void Game::update() {
 	}
 
 	// update everything else
-	window->clear(sf::Color::Color(25, 13, 0));
+	window->clear(sf::Color(25, 13, 0));
 
 	// keep the view centered on the player
 	// TODO: is there a cleaner way to do this?
