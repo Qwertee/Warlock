@@ -120,10 +120,16 @@ void Map::generateMap() {
         vec->at(i) = new std::vector<Tile *>(size);
         for (int j = 0; j < size; j++) {
 
-			if (map[i][j] > 0)
+			if (map[i][j] > max) {
+				vec->at(i)->at(j) = new Tile(i, j, Textures::mountain);
+			}
+			else if (map[i][j] > max / 32) {
 				vec->at(i)->at(j) = new Tile(i, j, Textures::grass);
-			else
+			}
+
+			else {
 				vec->at(i)->at(j) = new Tile(i, j, Textures::water);
+			}
         }
     }
 }

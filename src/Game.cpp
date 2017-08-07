@@ -6,7 +6,7 @@
 #include "Textures.h"
 
 #define MAP_SIZE 257
-#define VIEW_SCALE 1250
+#define VIEW_SCALE 1000
 
 Game::Game() {
 	Game::initialize();
@@ -26,7 +26,7 @@ void Game::initialize() {
 
 	player = new Player(8, 8);
 
-	map = new Map(MAP_SIZE, 0.2);
+	map = new Map(MAP_SIZE, 0.6);
 }
 
 void Game::run() {
@@ -56,8 +56,8 @@ void Game::update() {
 
 		if (event.type == sf::Event::MouseWheelScrolled) {
 			// TODO: Put a limit on how far you can scroll so you dont scroll though the map
-			view->setSize(view->getSize().x - event.mouseWheelScroll.delta * 100,
-						  view->getSize().y - event.mouseWheelScroll.delta * 100);
+			view->setSize(view->getSize().x - event.mouseWheelScroll.delta * 8,
+						  view->getSize().y - event.mouseWheelScroll.delta * 6.4);
 		}
 	}
 
