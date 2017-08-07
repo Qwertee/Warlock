@@ -9,8 +9,8 @@
 #define VIEW_SCALE 1000
 
 Game::Game() {
-	Game::initialize();
-    Game::run();
+	initialize();
+    run();
 }
 
 void Game::initialize() {
@@ -56,8 +56,8 @@ void Game::update() {
 
 		if (event.type == sf::Event::MouseWheelScrolled) {
 			// TODO: Put a limit on how far you can scroll so you dont scroll though the map
-			view->setSize(view->getSize().x - event.mouseWheelScroll.delta * 8,
-						  view->getSize().y - event.mouseWheelScroll.delta * 6.4);
+			view->setSize(view->getSize().x - event.mouseWheelScroll.delta * 8 * 10,
+						  view->getSize().y - event.mouseWheelScroll.delta * 6.4 * 10);
 		}
 	}
 

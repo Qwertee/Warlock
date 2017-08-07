@@ -20,10 +20,10 @@ private:
 	double roughness;
 
 	// Tile map for the world
-    std::vector<std::vector<Tile*>*> *vec;
+    std::vector<std::vector<Tile*>*> *tile_map;
 
 	// height map for the world
-	std::vector<std::vector<int>>    map;
+	std::vector<std::vector<int>>     height_map;
 
 
 	void generateMap();
