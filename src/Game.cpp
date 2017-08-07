@@ -26,7 +26,7 @@ void Game::initialize() {
 
 	player = new Player(8, 8);
 
-	map = new Map(MAP_SIZE);
+	map = new Map(MAP_SIZE, 0.2);
 }
 
 void Game::run() {

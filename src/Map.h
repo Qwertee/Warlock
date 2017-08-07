@@ -11,16 +11,20 @@
 class Map {
 private:
 	int size;
+	int max;
+	double roughness; // determines if terrain will be mountainous or flat (0 - 1)
     std::vector<std::vector<Tile*>*> *vec;
-	std::vector<std::vector<int>>     map;
+	std::vector<std::vector<int>>    map;
 
 
 	void generateMap();
-	void generateHeightMap(int range);
-	double randRange(double min, double max);
+	void generateHeightMap();
+
+	// random value between 1 and range
+	double randTo(int range);
 
 public:
-    Map(int size);
+    Map(int size, double rn);
 
     Tile *getTile(int x, int y);
 

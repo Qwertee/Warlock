@@ -8,6 +8,7 @@
 sf::Texture Textures::grass;
 sf::Texture Textures::character;
 sf::Texture Textures::water;
+sf::Texture Textures::mountain;
 
 void Textures::init() {
 
@@ -23,4 +24,5 @@ void Textures::init() {
 	grass.loadFromFile("../Assets/Grass.png");
 	character.loadFromFile("../Assets/Character.png");
 	water.loadFromFile("../Assets/Water.png");
+	mountain.loadFromFile("../Assets/Mountain.png");
 }

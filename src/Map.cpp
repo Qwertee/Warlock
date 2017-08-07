@@ -4,8 +4,10 @@
 #include "Map.h"
 #include "Textures.h"
 
-Map::Map(int size) {
+Map::Map(int size, double rn) {
 	this->size = size;
+	max = size - 1;
+	roughness = rn;
 
     vec = new std::vector<std::vector<Tile *>*>(size);
 
@@ -17,14 +19,14 @@ Map::Map(int size) {
 	// seed the rng
 	srand(time(NULL));
 
-	// set the four corners to a random value between 0-99 for the heightmap
-	map[0][0] = 100;
-	map[size - 1][0] = 100;
-	map[0][size - 1] = 100;
-	map[size - 1][size - 1] = 100;
+	// set the four corners to a starting value
+	map[0][0]				= max / 2;
+	map[size - 1][0]	    = max / 2;
+	map[0][size - 1]        = max / 2;
+	map[size - 1][size - 1] = max / 2;
 
 	// generate the heightmap
-	generateHeightMap(25);
+	generateHeightMap();
 
     // make the map
     generateMap();
@@ -41,7 +43,7 @@ Map::Map(int size) {
 }
 
 //void Map::generateHeightMap(int x1, int y1, int x2, int y2, int range, int level) {
-void Map::generateHeightMap(int range) {
+void Map::generateHeightMap() {
 	/*
 	if (level < 1) return;
 
@@ -71,31 +73,39 @@ void Map::generateHeightMap(int range) {
 	generateHeightMap(x1, y1, x2, y2, range / 2, level / 2);
 	*/
 
-	for (int length = size - 1; length >= 2; length /= 2, range /= 2) {
+	
+
+	for (int length = max; length >= 2; length /= 2) {
+		int scale = roughness * size;
 		int halfLength = length / 2;
 
-
 		// square 
-		for (int x = 0; x < size - 1; x += length) {
-			for (int y = 0; y < size - 1; y += length) {
-				double avg = map[x][y] + map[x + length][y] + map[x][y + length] + map[x + length][y + length];
+		for (int x = halfLength; x < max; x += length) {
+			for (int y = halfLength; y < max; y += length) {
+				int avg =
+					map[x - halfLength][y - halfLength] + 
+					map[x + halfLength][y - halfLength] +
+					map[x + halfLength][y + halfLength] + 
+					map[x - halfLength][y + halfLength];
+
 				avg /= 4.0;
-				// random value between -range and range
-				map[x + halfLength][y + halfLength] = avg + randRange(-range, range);
+				int value = avg + (randTo(99) / 100) * scale * 2 - scale;
+				map[x][y] = value;
 			}
 		}
 
 		// diamond
-		for (int x = 0; x < size - 1; x += halfLength) {
-			for (int y = (x + halfLength) % length; y < size - 1; y += length) {
-				double avg =
+		for (int x = 0; x <= max; x += halfLength) {
+			for (int y = (x + halfLength) % length; y <= max; y += length) {
+				int avg =
 					map[(x - halfLength + size - 1) % (size - 1)][y] +
-					map[(x + halfLength) % (size - 1)][y] +
+					map[(x + halfLength) % (size - 1)]           [y] +
 					map[x][(y + halfLength) % (size - 1)] +
 					map[x][(y - halfLength + size - 1) % (size - 1)];
-										// random value between -range and range
-				avg = (avg / 4.0) + randRange(-range, range);
-				map[x][y] = avg;
+									
+				avg /= 4;
+				int value = avg + (randTo(99) / 100) * scale * 2 - scale;
+				map[x][y] = value;
 
 				if (x == 0) map[size - 1][y] = avg;
 				if (y == 0) map[x][size - 1] = avg;
@@ -118,10 +128,11 @@ void Map::generateMap() {
     }
 }
 
-double Map::randRange(double min, double max) {
-	double d = rand() / RAND_MAX;
-	double value = min + d * (max - min);
-	return value;
+
+
+double Map::randTo(int range) {
+	double n = rand() % range + 1;
+	return n;
 }
 
 Tile *Map::getTile(int x, int y) {
