@@ -8,7 +8,9 @@
 .idea/*
 build/
 .vs/
+.vscode
 CMakeSettings.json
+height_map.txt
 
 # CMake
 cmake-build-debug/
