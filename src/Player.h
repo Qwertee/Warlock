@@ -5,7 +5,6 @@
 
 class Player : public sf::Drawable {
 private:
-    sf::Texture texture;
     sf::Vector2f pos;
     sf::Sprite sprite;
 

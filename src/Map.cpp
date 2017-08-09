@@ -1,5 +1,5 @@
 #include <iostream>
-#include <stdlib.h>
+
 #include <fstream>
 #include "Map.h"
 #include "Textures.h"
@@ -45,7 +45,7 @@ Map::Map(int size, double rn) {
 //void Map::generateHeightMap(int x1, int y1, int x2, int y2, int range, int level) {
 void Map::generateHeightMap() {
 	for (int length = max; length >= 2; length /= 2) {
-		int scale = roughness * size;
+        auto scale = static_cast<int>(roughness * size);
 		int halfLength = length / 2;
 
 		// square 
@@ -58,7 +58,7 @@ void Map::generateHeightMap() {
 					height_map[x - halfLength][y + halfLength];
 
 				avg /= 4.0;
-				int value = avg + (randTo(99) / 100) * scale * 2 - scale;
+                auto value = static_cast<int>(avg + (randTo(99) / 100) * scale * 2 - scale);
 				height_map[x][y] = value;
 			}
 		}
@@ -73,7 +73,7 @@ void Map::generateHeightMap() {
 					height_map[x][(y - halfLength + size - 1) % (size - 1)];
 									
 				avg /= 4;
-				int value = avg + (randTo(99) / 100) * scale * 2 - scale;
+                auto value = static_cast<int>(avg + (randTo(99) / 100) * scale * 2 - scale);
 				height_map[x][y] = value;
 
 				if (x == 0) height_map[size - 1][y] = avg;
