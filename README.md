@@ -1,7 +1,7 @@
 # Warlock
 
 This is a small demo of sorts that I wrote because I was interested in the way that games were designed. Currently generates a world
-with random terrain using the diamond - square algorithm to make a heightmap that is used internally to model the it.
+with random terrain using the diamond - square algorithm to make a heightmap that is used internally to model it.
 
 Other then walking around a randomly generated world, there isnt much to do. More work is planned.
 
