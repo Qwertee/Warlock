@@ -1,6 +1,4 @@
-#ifndef WARLOCK_TEXTURES_H
-#define WARLOCK_TEXTURES_H
-
+#pragma once
 
 #include <SFML/Graphics/Texture.hpp>
 
@@ -15,6 +13,3 @@ public:
 	static void init();
 
 };
-
-
-#endif //WARLOCK_TEXTURES_H

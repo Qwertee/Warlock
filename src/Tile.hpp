@@ -1,6 +1,4 @@
-#ifndef WARLOCK_TILE_H
-#define WARLOCK_TILE_H
-
+#pragma once
 
 #include <SFML/System.hpp>
 #include <SFML/Graphics.hpp>
@@ -13,6 +11,3 @@ public:
     void draw(sf::RenderTarget& target, sf::RenderStates states) const override;
     sf::FloatRect getRect();
 };
-
-
-#endif //WARLOCK_TILE_H

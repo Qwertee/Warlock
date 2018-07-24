@@ -1,6 +1,6 @@
 
-#include "Player.h"
-#include "Textures.h"
+#include "Player.hpp"
+#include "Textures.hpp"
 
 Player::Player() {
 	pos = sf::Vector2f(8, 8);

@@ -1,8 +1,8 @@
 #include <iostream>
 
 #include <fstream>
-#include "Map.h"
-#include "Textures.h"
+#include "Map.hpp"
+#include "Textures.hpp"
 
 Map::Map(int size, double rn) {
 	this->size = size;

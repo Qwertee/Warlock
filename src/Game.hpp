@@ -2,14 +2,12 @@
 // Created by jon on 2/22/17.
 //
 
-#ifndef WARLOCK_GAME_H
-#define WARLOCK_GAME_H
-
+#pragma once
 
 #include <SFML/Graphics/RenderWindow.hpp>
 #include <SFML/Window/Keyboard.hpp>
-#include "Player.h"
-#include "Map.h"
+#include "Player.hpp"
+#include "Map.hpp"
 
 class Game {
 private:
@@ -30,5 +28,3 @@ public:
 	void cleanUp();
 };
 
-
-#endif //WARLOCK_GAME_H

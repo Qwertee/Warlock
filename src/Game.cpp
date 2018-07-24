@@ -2,8 +2,8 @@
 // Created by jon on 2/22/17.
 //
 #include <iostream>
-#include "Game.h"
-#include "Textures.h"
+#include "Game.hpp"
+#include "Textures.hpp"
 
 #define MAP_SIZE 257
 #define VIEW_SCALE 1000
@@ -104,7 +104,6 @@ void Game::cleanUp() {
 void Game::handleInput(sf::Keyboard::Key key) {
     if (key == sf::Keyboard::Right) {
         player->move(1, 0);
-
     }
     else if (key == sf::Keyboard::Left) {
         player->move(-1, 0);

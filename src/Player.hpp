@@ -1,5 +1,4 @@
-#ifndef WARLOCK_PLAYER_H
-#define WARLOCK_PLAYER_H
+#pragma once
 
 #include <SFML/Graphics.hpp>
 
@@ -21,6 +20,3 @@ public:
     void draw(sf::RenderTarget& target, sf::RenderStates states) const override;
 
 };
-
-
-#endif //WARLOCK_PLAYER_H

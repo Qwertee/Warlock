@@ -1,4 +1,4 @@
-#include "Textures.h"
+#include "Textures.hpp"
 
 // for changing the working directory for Windows compatibility
 #if _WIN32

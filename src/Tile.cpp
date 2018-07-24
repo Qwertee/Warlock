@@ -1,5 +1,5 @@
-#include "Tile.h"
-#include "Textures.h"
+#include "Tile.hpp"
+#include "Textures.hpp"
 
 Tile::Tile(int x, int y, sf::Texture &texture) {
     sprite = sf::Sprite(texture);

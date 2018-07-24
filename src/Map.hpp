@@ -2,11 +2,10 @@
 // Created by jon on 2/23/17.
 //
 
-#ifndef WARLOCK_MAP_H
-#define WARLOCK_MAP_H
+#pragma once
 
 
-#include "Tile.h"
+#include "Tile.hpp"
 
 class Map {
 private:
@@ -38,6 +37,3 @@ public:
     Tile *getTile(int x, int y);
 
 };
-
-
-#endif //WARLOCK_MAP_H
