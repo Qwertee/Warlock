@@ -12,17 +12,17 @@ sf::Texture Textures::mountain;
 
 void Textures::init() {
 
-	/* need to change the directory path for Windows because it likes to screw
-	 * with file paths (executables are put an additional directory deep from what
-	 * linux does, so cd one directory up for the paths to work again
-	 */
+  /* need to change the directory path for Windows because it likes to screw
+   * with file paths (executables are put an additional directory deep from what
+   * linux does, so cd one directory up for the paths to work again
+   */
 #if _WIN32
-	_chdir("../");
+  _chdir("../");
 #endif // _WIN32
 
-	// load the files
-	grass.loadFromFile("../Assets/Grass.png");
-	character.loadFromFile("../Assets/Character.png");
-	water.loadFromFile("../Assets/Water.png");
-	mountain.loadFromFile("../Assets/Mountain.png");
+  // load the files
+  grass.loadFromFile("../Assets/Grass.png");
+  character.loadFromFile("../Assets/Character.png");
+  water.loadFromFile("../Assets/Water.png");
+  mountain.loadFromFile("../Assets/Mountain.png");
 }

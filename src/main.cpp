@@ -1,7 +1,7 @@
 #include "Game.hpp"
 
 int main() {
-    auto *game = new Game();
-	delete game;
-    return 0;
+  auto *game = new Game();
+  delete game;
+  return 0;
 }

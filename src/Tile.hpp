@@ -1,13 +1,14 @@
 #pragma once
 
-#include <SFML/System.hpp>
 #include <SFML/Graphics.hpp>
+#include <SFML/System.hpp>
 
-class Tile : public sf::Drawable{
+class Tile : public sf::Drawable {
 private:
-    sf::Sprite sprite;
+  sf::Sprite sprite;
+
 public:
-    Tile(int x, int y, sf::Texture &texture);
-    void draw(sf::RenderTarget& target, sf::RenderStates states) const override;
-    sf::FloatRect getRect();
+  Tile(int x, int y, sf::Texture &texture);
+  void draw(sf::RenderTarget &target, sf::RenderStates states) const override;
+  sf::FloatRect getRect();
 };
