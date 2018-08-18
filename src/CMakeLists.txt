@@ -5,6 +5,7 @@ set(SRC_FILES
         Player.cpp Player.hpp
         Textures.cpp Textures.hpp
         Tile.cpp Tile.hpp
+        noiseutils.cpp noiseutils.h
         )
 
 set(CMAKE_RUNTIME_OUTPUT_DIRECTORY ${CMAKE_BINARY_DIR}/bin)

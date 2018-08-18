@@ -21,7 +21,7 @@ private:
   std::vector<std::vector<Tile *> *> *tile_map;
 
   // height map for the world
-  std::vector<std::vector<int>> height_map;
+  std::vector<std::vector<float>> height_map;
 
   void generateMap();
   void generateHeightMap();

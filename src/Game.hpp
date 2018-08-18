@@ -18,6 +18,7 @@ private:
 
   // private functions
   void handleInput(sf::Keyboard::Key key);
+  sf::Vector2i convertScreenToWorldCoords(sf::Vector2i pos);
 
 public:
   Game();
