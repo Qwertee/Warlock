@@ -33,3 +33,17 @@ if(SFML_FOUND)
 	include_directories(${PROJECT_SOURCE_DIR}/include ${SFML_INCLUDE_DIR})
     target_link_libraries(${EXECUTABLE_NAME} ${SFML_LIBRARIES} libnoise)
 endif()
+
+
+#copy the needed dll files to the output directory
+if (WIN32)
+	# copy libnoise.dll (included with this project)
+	configure_file("${CMAKE_SOURCE_DIR}/lib/noise/libnoise.dll" "${CMAKE_BINARY_DIR}/bin" COPYONLY)
+
+	# copy SFML dlls
+	configure_file("${SFML_INCLUDE_DIR}/../bin/sfml-window-d-2.dll" "${CMAKE_BINARY_DIR}/bin" COPYONLY)
+	configure_file("${SFML_INCLUDE_DIR}/../bin/sfml-system-d-2.dll" "${CMAKE_BINARY_DIR}/bin" COPYONLY)
+
+	# copy assets folder to output directory so executable can properly load the assets
+	file(COPY "${CMAKE_SOURCE_DIR}/Assets/" DESTINATION "${CMAKE_BINARY_DIR}/bin/Assets")
+endif()
