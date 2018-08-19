@@ -6,8 +6,6 @@ set(CMAKE_CXX_STANDARD 11)
 
 set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -std=c++11 -Wall")
 
-#include_directories(${PROJECT_SOURCE_DIR}/include)
-
 add_subdirectory(src)
 
 #set(SOURCE_FILES src/main.cpp src/Player.cpp src/Player.h src/Game.cpp src/Game.h src/Textures.h src/Textures.cpp src/Map.cpp src/Map.h src/Tile.cpp src/Tile.h)
