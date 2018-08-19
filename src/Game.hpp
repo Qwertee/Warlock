@@ -26,5 +26,6 @@ public:
   void run();
   void update();
   void render();
+  void exitGame();
   void cleanUp();
 };

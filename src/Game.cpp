@@ -6,7 +6,7 @@
 #include <iostream>
 #include <cmath>
 
-#define MAP_SIZE 256
+#define CHUNK_SIZE 256
 #define WIDTH_RATIO 8
 #define HEIGHT_RATIO 6.4
 #define VIEW_SCALE 100
@@ -27,9 +27,9 @@ void Game::initialize() {
 
   Textures::init();
 
-  player = new Player(8, 8);
+  player = new Player();
 
-  map = new Map(MAP_SIZE, 0.6);
+  map = new Map(CHUNK_SIZE, 0.6);
 }
 
 void Game::run() {
@@ -109,8 +109,8 @@ void Game::render() {
   sf::FloatRect rect(view->getCenter() - view->getSize(),
                      view->getSize() + view->getSize());
 
-  for (int i = 0; i < MAP_SIZE; i++) {
-    for (int j = 0; j < MAP_SIZE; j++) {
+  for (int i = 0; i < CHUNK_SIZE; i++) {
+    for (int j = 0; j < CHUNK_SIZE; j++) {
       Tile *tile = map->getTile(i, j);
       if (rect.intersects(tile->getRect())) {
         window->draw(*tile);
@@ -132,15 +132,26 @@ void Game::cleanUp() {
   delete map;
 }
 
+void Game::exitGame() {
+  cleanUp();
+  exit(0);
+}
+
 void Game::handleInput(sf::Keyboard::Key key) {
   if (key == sf::Keyboard::Right) {
     player->move(1, 0);
-  } else if (key == sf::Keyboard::Left) {
+  } 
+  else if (key == sf::Keyboard::Left) {
     player->move(-1, 0);
-  } else if (key == sf::Keyboard::Up) {
+  } 
+  else if (key == sf::Keyboard::Up) {
     player->move(0, -1);
-  } else if (key == sf::Keyboard::Down) {
+  } 
+  else if (key == sf::Keyboard::Down) {
     player->move(0, 1);
+  }
+  else if (key == sf::Keyboard::Q) {
+    exitGame();
   }
 }
 

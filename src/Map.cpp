@@ -110,7 +110,7 @@ void Map::generateHeightMap() {
 
   // rectangular bounds within the noise graph to sample from (same every time for same sizes)
   // experiment with these values when eventually generating chunks
-  heightMapBuilder.SetBounds(2.0, 6.0, 1.0, 5.0);
+  heightMapBuilder.SetBounds(0.0, 5.0, 0.0, 5.0);
 
   // generate the map
   heightMapBuilder.Build();
