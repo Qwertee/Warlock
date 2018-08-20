@@ -5,11 +5,7 @@
 #include "Textures.h"
 #include <iostream>
 #include <cmath>
-
-#define CHUNK_SIZE 256
-#define WIDTH_RATIO 8
-#define HEIGHT_RATIO 6.4
-#define VIEW_SCALE 100
+#include "Constants.h"
 
 namespace warlock {
 

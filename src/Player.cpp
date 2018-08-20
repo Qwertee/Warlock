@@ -24,7 +24,8 @@ namespace warlock {
   }
 
   void Player::move(int xOffset, int yOffset) {
-    sprite.move(xOffset * Constants::TILE_WIDTH, yOffset * Constants::TILE_WIDTH);
+    // move the sprite that gets drawn to the screen
+    sprite.move(xOffset * TILE_WIDTH, yOffset * TILE_WIDTH);
     pos.x += xOffset;
     pos.y += yOffset;
   }
@@ -34,6 +35,6 @@ namespace warlock {
   }
 
   sf::Vector2f Player::getTexturePos() {
-    return sf::Vector2f(pos.x * Constants::TILE_WIDTH, pos.y * Constants::TILE_WIDTH);
+    return sf::Vector2f(pos.x * TILE_WIDTH, pos.y * TILE_WIDTH);
   }
 }
