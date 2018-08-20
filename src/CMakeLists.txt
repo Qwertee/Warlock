@@ -1,11 +1,11 @@
 set(SRC_FILES
         main.cpp
-        Game.cpp Game.hpp
-        Map.cpp Map.hpp
-        Player.cpp Player.hpp
-        Textures.cpp Textures.hpp
-        Tile.cpp Tile.hpp
-        noiseutils.cpp noiseutils.h
+        Game.cpp
+        Map.cpp
+        Player.cpp
+        Textures.cpp
+        Tile.cpp
+        noiseutils.cpp
 )
 
 set(CMAKE_RUNTIME_OUTPUT_DIRECTORY ${CMAKE_BINARY_DIR}/bin)

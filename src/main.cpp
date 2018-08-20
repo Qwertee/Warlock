@@ -1,7 +1,7 @@
-#include "Game.hpp"
+#include "Game.h"
 
 int main() {
-  auto *game = new Game();
+  auto *game = new warlock::Game();
   delete game;
   return 0;
 }
