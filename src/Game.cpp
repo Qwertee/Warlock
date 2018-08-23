@@ -16,6 +16,7 @@ namespace warlock {
 
   void Game::initialize() {
     window = new sf::RenderWindow(sf::VideoMode(800, 640), "Warlock");
+    window->setVerticalSyncEnabled(true);
     window->setPosition(sf::Vector2i(0, 0));
     view = new sf::View(sf::FloatRect(0, 0, WIDTH_RATIO * VIEW_SCALE, HEIGHT_RATIO * VIEW_SCALE));
     window->setView(*view);
@@ -73,8 +74,6 @@ namespace warlock {
           view->getSize().y > HEIGHT_RATIO * VIEW_SCALE) {
           view->setSize(oldX, oldY);
         }
-
-        std::cout << "current view size: " << view->getSize().x << ", " << view->getSize().y << std::endl;
       }
 
       // mouse click
