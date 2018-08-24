@@ -5,6 +5,7 @@ namespace warlock {
   sf::Texture Textures::character;
   sf::Texture Textures::water;
   sf::Texture Textures::mountain;
+  sf::Texture Textures::snow;
 
   void Textures::init() {
     // load the files
@@ -12,5 +13,6 @@ namespace warlock {
     character.loadFromFile("Assets/Character.png");
     water.loadFromFile("Assets/Water.png");
     mountain.loadFromFile("Assets/Mountain.png");
+    snow.loadFromFile("Assets/Snow.png");
   }
 }

@@ -5,6 +5,7 @@
 #pragma once
 
 #include "Tile.h"
+#include "noiseutils.h"
 
 namespace warlock {
   class Map {
@@ -18,6 +19,9 @@ namespace warlock {
     // determines if terrain will be mountainous or flat (0 - 1) res.
     double roughness;
 
+    double resultMapMaxValue;
+    double resultMapMinValue;
+
     // Tile map for the world
     std::vector<std::vector<Tile *> *> *tile_map;
 
@@ -26,9 +30,12 @@ namespace warlock {
 
     void generateMap();
     void generateHeightMap();
+    void translateResultMap(noise::utils::NoiseMap *);
 
     // random value between 1 and RANGE
     double randTo(int range);
+
+    void normalizeHeightMap();
 
   public:
     Map(int size, double rn);

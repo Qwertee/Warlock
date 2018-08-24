@@ -93,6 +93,38 @@ namespace warlock {
   }
   */
 
+  void Map::normalizeHeightMap() {
+    for (int x = 0; x < size; x++) {
+      for (int y = 0; y < size; y++) {
+        height_map[x][y] = (height_map[x][y] - resultMapMinValue) /
+                           (resultMapMaxValue - resultMapMinValue);
+      }
+    }
+  }
+
+  void Map::translateResultMap(utils::NoiseMap *resultMap) {
+    int resultMapValue;
+
+    // initialize the min and max variables
+    resultMapMinValue = std::numeric_limits<float>::max();
+    resultMapMaxValue = std::numeric_limits<float>::min();
+
+    for (int x = 0; x < size; x++) {
+      for (int y = 0; y < size; y++) {
+        int resultMapValue = resultMap->GetValue(x, y);
+
+        if (resultMapValue > resultMapMaxValue) {
+          resultMapMaxValue = resultMapValue;
+        }
+
+        if (resultMapValue < resultMapMinValue) {
+          resultMapMinValue = resultMapValue;
+        }
+
+        height_map[x][y] = resultMapValue;
+      }
+    }
+  }
 
   // new and improved heightmap generation using libnoise for much more 'natural' looking noise.
   void Map::generateHeightMap() {
@@ -117,20 +149,20 @@ namespace warlock {
     heightMapBuilder.Build();
 
     // translate and copy resulting noise map to our 2d vector map
-    for (int x = 0; x < size; x++) {
-      for (int y = 0; y < size; y++) {
-        // generated number is between -1 and 1, adjust to be between 0 and 1
-        height_map[x][y] = (resultMap.GetValue(x, y) + 1) / 2;
-      }
-    }
+    translateResultMap(&resultMap);
+
+    normalizeHeightMap();
   }
 
   void Map::generateMap() {
     for (int i = 0; i < size; i++) {
       tile_map->at(i) = new std::vector<Tile *>(size);
       for (int j = 0; j < size; j++) {
-
-        if (height_map[i][j] > 0.66) {
+        // snow is only spawned at mountain tops at the moments, don't spawn too much
+        if (height_map[i][j] > 0.95) {
+          tile_map->at(i)->at(j) = new Tile(i, j, Textures::snow);
+        }
+        else if (height_map[i][j] > 0.66) {
           tile_map->at(i)->at(j) = new Tile(i, j, Textures::mountain);
         }
         else if (height_map[i][j] > 0.33) {
@@ -139,6 +171,10 @@ namespace warlock {
 
         else {
           tile_map->at(i)->at(j) = new Tile(i, j, Textures::water);
+        }
+
+        if (height_map[i][j] < 0) {
+          std::cout << "found value less than zero!" << std::endl;
         }
       }
     }
